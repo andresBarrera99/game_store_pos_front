@@ -1,0 +1,7 @@
+{
+  "name": "game_store_pos_front",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
