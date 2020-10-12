@@ -41,6 +41,7 @@ export class CreateProductPage implements OnInit {
 
   createProduct(product) {
     product.brand = this.getBrandObject(product);
+    product.technology = {};
     product.technologies = this.selectedTechnologies;
     this.service.doPost({ action: '/products/create', postData: product })
       .then((responseBody: any) => {
