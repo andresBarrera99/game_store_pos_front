@@ -1,0 +1,167 @@
+<ion-content [fullscreen]="true">
+  <h1 class="text-center font-weight-bold">Registrar Alquiler</h1>
+  <div class="border-top"></div>
+  <form [formGroup]="createRentForm" (ngSubmit)="createRent(createRentForm.value)">
+    <div class="container mb-5">
+      <ion-grid class="mt-5">
+        <ion-row class="row justify-content-center">          
+          <h3 class="text-center font-weight-bold">Cliente</h3>
+        </ion-row>
+        <ion-row class="row justify-content-center mt-2">
+          <ion-col size-sm="4" size-xs="8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <ion-icon style="font-size:24px;" name="card"></ion-icon>Tipo de Identificación
+                </span>
+              </div>
+              <ion-select class="form-control" placeholder="Documento" interface="alert"
+                formControlName="clientDocType">
+                <ion-select-option value="{{documentType.id}}" *ngFor="let documentType of documentTypes">
+                  {{documentType.initials + ' | ' + documentType.description}}</ion-select-option>
+              </ion-select>
+            </div>
+          </ion-col>
+          <ion-col size-sm="6" size-xs="8">
+            <div class="input-group">
+              <span class="input-group-text">
+                <ion-icon style="font-size:24px;" name="card"></ion-icon>Número identificación
+              </span>
+              <ion-input type="text" class="form-control" style="display: inline-flex;"
+                placeholder="Número identificación" aria-label="Número identificación" formControlName="clientDocNumber"
+                clearInput></ion-input>
+
+            </div>
+          </ion-col>
+          <ion-col size-sm="2" size-xs="2">
+            <button type="button" class="btn btn-primary ml-2" (click)='searchClient()'
+              [disabled]="clientSelected">Consultar</button>
+          </ion-col>
+        </ion-row>
+        <div *ngIf="client">
+          <ion-row class="row justify-content-center mt-2">
+            <ion-item lines="none">
+              <ion-label>
+                <span class="font-italic">{{client.docType.initials + '|' + client.docNumber}}
+                  : {{client.name + ' ' + client.lastName1 + ' ' + client.lastName2}}
+                </span>
+              </ion-label>
+            </ion-item>
+          </ion-row>
+        </div>
+        <div class="border-top mt-4"></div>        
+        <ion-row class="row justify-content-center">          
+          <h3 class="text-center font-weight-bold">Productos</h3>
+        </ion-row>
+        <ion-row class="row justify-content-center mt-2">
+          <ion-col size-sm="6" size-xs="8">
+            <div class="input-group">
+              <span class="input-group-text">Nombre Producto
+              </span>
+              <ion-input type="text" class="form-control" style="display: inline-flex;" placeholder="Producto"
+                aria-label="Producto" formControlName="productName" clearInput></ion-input>
+            </div>
+          </ion-col>
+          <ion-col size-sm="6" size-xs="8">
+            <button type="button" class="btn btn-primary " (click)='searchProducts()'>Consultar Producto</button>
+          </ion-col>
+        </ion-row>
+        <div *ngIf="products.length>0">
+          <div class="border-top mt-4"></div>
+          <ion-row style="align-content: center;">
+            <ion-col size-sm="4" size-xs="12" *ngFor="let product of products">
+              <mat-nav-list class="sidenav-container">
+              <mat-list-item class="btn btn-outline-dark" (click)="onProductClick(product)">
+                <h3 matLine class="font-weight-bold text-center">Nombre: 
+                  <span class="font-italic">{{product.name}}</span>
+                </h3> 
+                <p matLine>
+                  <span class="">Tecnologia: </span>
+                  <span class="font-italic">{{product.technology.name}}</span>
+                </p>
+                <p matLine>
+                  <span class="">Cantidad Disponible: </span>
+                  <span class="font-italic">{{product.quantity}}</span>
+                </p>
+                <p matLine>
+                  <span class="">Precio: </span>
+                  <span class="font-italic">{{product.price}}</span>
+                </p>
+                <ion-icon style="font-size:24px;" name="create-outline"></ion-icon>
+              </mat-list-item>
+            </mat-nav-list>
+            </ion-col>
+          </ion-row>
+        </div>
+
+        <div *ngIf="selectedProducts.length>0">
+          <div class="border-top mt-4"></div>
+          <ion-row class="row justify">          
+            <h4 class="font-weight-bold">Productos seleccionados</h4>
+          </ion-row>
+          <ion-row style="align-content: center;">
+            <ion-col size-sm="4" size-xs="12" *ngFor="let product of selectedProducts">
+              <mat-nav-list class="sidenav-container">
+              <mat-list-item class="btn btn-outline-dark" (click)="onSelectedProductClick(product)">
+                <h3 matLine class="font-weight-bold text-center">Nombre: 
+                  <span class="font-italic">{{product.name}}</span>
+                </h3> 
+                 <p matLine>
+                  <span class="">Tecnologia: </span>
+                  <span class="font-italic">{{product.technology.name}}</span>
+                </p>
+                <p matLine >
+                  <span class="">Precio: </span>
+                  <span class="font-italic">{{product.price}}</span>
+                </p>
+                <ion-icon name="close"></ion-icon>
+              </mat-list-item>
+            </mat-nav-list>
+            </ion-col>
+          </ion-row>
+        </div>
+        <ion-row class="row justify-content-center">          
+          <h3 class="text-center font-weight-bold">Fecha Vencimiento</h3>
+        </ion-row>
+        <ion-row class="row justify-content-center mt-2">
+          <ion-col>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Fecha Vencimiento</span>
+              </div>
+              <ion-datetime class="form-control" formControlName="untilDate" displayFormat="YYYY-MM-DD" min="1900"
+                max="2050"></ion-datetime>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="row justify-content-center">          
+          <h3 class="text-center font-weight-bold">Total a Pagar</h3>
+        </ion-row>
+        <ion-row class="row justify-content-center mt-2">
+          <ion-col>
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Total</span>
+              </div>
+              <ion-input type="text" class="form-control" style="display: inline-flex;" placeholder="0"
+              aria-label="0" formControlName="totalValue" value="0" clearInput [disabled]= "true"></ion-input>
+            </div>
+          </ion-col>
+        </ion-row>
+        <div class="border-top mt-4"></div>
+        <ion-row class="mt-2">
+          <ion-col size-sm="6" size-xs="8">
+            <button type="submit" class="btn btn-success btn-lg btn-block"
+              [disabled]="!createRentForm.valid">Registrar</button>
+          </ion-col>
+          <ion-col size-sm="6" size-xs="8">
+            <a routerLink="/rent" style="text-decoration: none;">
+              <button type="button" class="btn btn-danger btn-lg btn-block"
+                (click)='createRentForm.reset();'>Cancelar</button>
+            </a>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </form>
+</ion-content>

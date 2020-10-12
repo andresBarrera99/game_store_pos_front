@@ -1,0 +1,124 @@
+<ion-content [fullscreen]="true">
+  <form [formGroup]="createProductForm" (ngSubmit)="createProduct(createProductForm.value)">
+    <h1 class="text-center font-weight-bold">Registrar Producto</h1>
+    <div class="border-top my-3"></div>
+    <div class="container">
+      <ion-grid class="mt-5">
+        <ion-row class="row justify-content-center mt-2">
+          <ion-col size-sm="6" size-xs="8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Título</span>
+              </div>
+              <ion-input type="text" class="form-control" style="display: inline-flex;" placeholder="Nombre Pelicula"
+                aria-label="Nombre Pelicula" formControlName="name" clearInput autofocus></ion-input>
+            </div>
+          </ion-col>
+          <ion-col size-sm="6" size-xs="8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Fecha lanzamiento</span>
+              </div>
+              <ion-datetime class="form-control" formControlName="anio" displayFormat="YYYY-MM-DD" min="1900"
+                max="2050"></ion-datetime>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="row justify-content-center mt-2">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">Descripción</span>
+            </div>
+            <ion-input type="text" class="form-control" style="display: inline-flex;" placeholder="Descripción Breve"
+              aria-label="Descripción Breve" formControlName="description" clearInput></ion-input>
+          </div>
+        </ion-row>
+        <ion-row class="row justify-content-center mt-2">
+          <ion-col size-sm="6" size-xs="8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Marca</span>
+              </div>
+              <ion-select class="form-control" placeholder="Marca" interface="alert" formControlName="brand">
+                <ion-select-option value="{{brand.id}}" *ngFor="let brand of brands">
+                  {{brand.name}}</ion-select-option>
+              </ion-select>
+            </div>
+          </ion-col>
+          <ion-col size-sm="6" size-xs="8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Precio</span>
+              </div>
+              <ion-input type="number" class="form-control" style="display: inline-flex;" placeholder="Precio"
+                aria-label="Precio" formControlName="price" clearInput></ion-input>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row class="row justify-content-center mt-2">
+          <ion-col size-sm="6" size-xs="8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Tecnología</span>
+              </div>
+              <ion-select  class="form-control" placeholder="Marca" interface="alert" formControlName="technology">
+                <ion-select-option value="{{technology.id}}" *ngFor="let technology of technologies">
+                  {{technology.name}}</ion-select-option>
+              </ion-select>
+            </div>
+          </ion-col>
+          <ion-col size-sm="4" size-xs="8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">Cantidad</span>
+              </div>
+              <ion-input type="number" class="form-control" style="display: inline-flex;" placeholder="Cantidad"
+                aria-label="Cantidad" formControlName="quantity" clearInput></ion-input>
+            </div>
+          </ion-col>
+          <ion-col size-sm="2" size-xs="4">
+            <button type="button" class="btn btn-secondary ml-2" (click)='addTechnology()'>Añadir Tecnología</button>
+          </ion-col>
+        </ion-row>
+
+        <div *ngIf="selectedTechnologies.length>0">
+          <div class="border-top mt-4"></div>
+          <ion-row class="row justify">          
+            <h4 class="font-weight-bold">Tecnologías agregadas</h4>
+          </ion-row>
+          <ion-row style="align-content: center;">
+            <ion-col size-sm="4" size-xs="12" *ngFor="let technology of selectedTechnologies">
+              <mat-nav-list class="sidenav-container">
+              <mat-list-item class="btn btn-outline-dark" (click)="onSelectedTechnologyClick(technology)">
+                <h3 matLine class="font-weight-bold text-center">
+                  <span class="font-italic">{{technology.technology.name}}</span>
+                </h3> 
+                <p matLine >
+                  <span class="">Cantidad: </span>
+                  <span class="font-italic">{{technology.quantity}}</span>
+                </p>
+                <ion-icon name="close"></ion-icon>
+              </mat-list-item>
+            </mat-nav-list>
+            </ion-col>
+          </ion-row>
+        </div>
+
+        <div class="border-top mt-4"></div>
+        <ion-row class="mt-2">
+          <ion-col size-sm="6" size-xs="8">
+            <button type="submit" class="btn btn-success btn-lg btn-block"
+              [disabled]="!createProductForm.valid">Registrar</button>
+          </ion-col>
+          <ion-col size-sm="6" size-xs="8">
+            <a routerLink="/products" style="text-decoration: none;">
+              <button type="button" class="btn btn-danger btn-lg btn-block"
+                (click)='createProductForm.reset();'>Cancelar</button>
+            </a>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </div>
+  </form>
+</ion-content>

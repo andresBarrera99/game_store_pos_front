@@ -14,7 +14,9 @@
             data-target=".navbar-collapse" routerLink="home" class="nav-link">Menu<span
               class="sr-only">(current)</span></a></li>
         <li class="nav-item"><a class="nav-link" *ngIf='parameters.isUserLoggenIn()' data-toggle="collapse"
-            data-target=".navbar-collapse" routerLink="rent" class="nav-link">Alquiler</a></li>
+            data-target=".navbar-collapse" routerLink="rent" class="nav-link">Alquiler</a></li>            
+        <li class="nav-item"><a class="nav-link" *ngIf='parameters.isUserLoggenIn()' data-toggle="collapse"
+          data-target=".navbar-collapse" routerLink="products" class="nav-link">Productos</a></li>
         <li class="nav-item"><a class="nav-link" *ngIf='parameters.isUserLoggenIn()' data-toggle="collapse"
             data-target=".navbar-collapse" routerLink="clients" class="nav-link">Clientes</a></li>
       </ul>

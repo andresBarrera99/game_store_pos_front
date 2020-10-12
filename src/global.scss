@@ -28,6 +28,11 @@
     min-width: 150px; 
     max-height: 40px; 
 }
+
+.btn{
+    height: 40px;
+}
+
 .alert-wrapper{
     max-width: unset !important;
     width: 50% !important;
@@ -38,18 +43,18 @@
 }
 
 .icon{
-    background: white;
+    background: #343a40;
     border-radius: 50%;
     position: relative;
+    text-align: center;
     padding: 1px;
-    width: 100px;
-    height: 100px;
+    width: 150px;
+    height: 150px;
     display: block;
     margin: auto;
     img{
-        position: absolute;
         width: 100px;
         padding: 1px;
-        margin: auto auto;
+        margin: 25px 25px 25px 25px;
     }
 }

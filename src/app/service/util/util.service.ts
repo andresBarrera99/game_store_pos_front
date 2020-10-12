@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { Router,NavigationEnd} from '@angular/router';
 import { AlertController,LoadingController,ToastController} from '@ionic/angular';
+import { resolve } from 'dns';
 import { ParametersService } from 'src/app/service/parameters/parameters.service';
 
 @Injectable({
@@ -8,6 +9,7 @@ import { ParametersService } from 'src/app/service/parameters/parameters.service
 })
 export class UtilService {
   private loadingElement : any;
+  private loadingdElements = 0;
 
   constructor(
     router : Router,
@@ -37,19 +39,28 @@ export class UtilService {
   }
 
   public async dismissLoading() {
-    if(this.loadingElement){
+    this.loadingdElements = this.loadingdElements - 1;
+    if(this.loadingElement && this.loadingdElements === 0){ //si habia un elemnto cargando, se cierra
       const loading = this.loadingElement;
       this.loadingElement = null;
       return loading.dismiss();
+    }else{  //En caso de que haya más de un elemento cargando, se suelve la peticion en una promesa
+      return new Promise((resolve) => {resolve()});
     }
   }
   public async showLoading() {
-    let msgWait = 'Cargando ...'
-      this.loadingElement = await this.loadingController.create({
-        spinner : "crescent",
-        message : msgWait
-      });
-      return this.loadingElement.present();
+    this.loadingdElements = this.loadingdElements + 1;
+    if(this.loadingdElements === 1){ //si no hay elementos crgando, se muestra el alert
+      let msgWait = 'Cargando ...'
+        this.loadingElement = await this.loadingController.create({
+          spinner : "crescent",
+          message : msgWait
+        });
+        return this.loadingElement.present();
+    }else{ //En caso de que haya un elemento cargando, se suelve la peticion en una promesa
+      return new Promise((resolve) => {resolve()});
+    }
+    
   }
 
   public setCustomError(formControl,msgError){

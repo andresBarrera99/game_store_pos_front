@@ -36,13 +36,22 @@ export class CreateClientPage implements OnInit {
   }
 
   createClient(client) {
-    let clientJson = JSON.stringify(client);
-    console.log(clientJson)
+    client.docType = this.getDocTypeObject(client);
     this.service.doPost({ action: '/clients/create', postData: client })
       .then((responseBody: any) => {
         this.util.showAlert('Información', 'El cliente ha sido registrado con exito con el identificador: ' + responseBody.clientID);
         this.createClientForm.reset();
       }).catch(err => { });
+  }
+
+  getDocTypeObject(client){
+    let docTypeLocal: any;
+    this.documentTypes.forEach(documentType => {
+      if( documentType.id == client.docType){
+        docTypeLocal = documentType;
+      }
+    });
+    return docTypeLocal;
   }
 
 }

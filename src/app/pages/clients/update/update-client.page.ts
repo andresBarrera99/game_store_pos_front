@@ -50,6 +50,7 @@ export class UpdatePage implements OnInit {
   }
 
   searchClient(client) {
+    client.docType = this.getDocTypeObject(client);
     this.service.doPost({ action: '/clients/search', postData: client })
     .then((responseBody: any) => {
       this.client = responseBody;
@@ -58,6 +59,17 @@ export class UpdatePage implements OnInit {
       this.searchClientForm.disable();
     }).catch(err => { });
   }
+
+  getDocTypeObject(client){
+    let docTypeLocal: any;
+    this.documentTypes.forEach(documentType => {
+      if( documentType.id == client.docType){
+        docTypeLocal = documentType;
+      }
+    });
+    return docTypeLocal;
+  }
+
   
   setValues(){
     this.updateClientForm.patchValue({

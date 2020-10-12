@@ -1,0 +1,133 @@
+<ion-content [fullscreen]="true">
+  <h1 class="text-center font-weight-bold">Actualizar Producto</h1>
+  <div class="border-top my-3"></div>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form [formGroup]="searchProductForm" (ngSubmit)="searchProduct(searchProductForm.value)">
+          <div class="container">
+            <ion-grid class="mt-5">
+              <ion-row class="row justify-content-center mt-2">
+                <div class="input-group">
+                  <span class="input-group-text">Nombre Producto
+                  </span>
+                  <ion-input type="text" class="form-control" style="display: inline-flex;"
+                    placeholder="Producto" aria-label="Producto" formControlName="name"
+                    clearInput></ion-input>
+                </div>
+              </ion-row>
+              <ion-row class="row justify-content-center mt-2">
+                <ion-col>
+                  <button type="submit" class="btn btn-primary btn-lg btn-block"
+                  [disabled]="!searchProductForm.valid">Consultar</button>
+                </ion-col>
+                <ion-col>
+                  <button type="button" class="btn btn-secondary btn-lg btn-block"
+                    (click)='clearForm()'>Limpiar</button>
+                </ion-col>
+                <ion-col>
+                  <a routerLink="/products" style="text-decoration: none;">
+                    <button type="button" class="btn btn-danger btn-lg btn-block"
+                      (click)='clearForm()'>Cancelar</button>
+                  </a>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </form>
+      </ion-col>
+    </ion-row>
+    <div *ngIf="products.length>0">
+      <div class="border-top mt-4"></div>
+      <ion-row style="align-content: center;">
+        <ion-col size-sm="4" size-xs="12" *ngFor="let product of products">
+          <mat-nav-list class="sidenav-container">
+          <mat-list-item class="btn btn-outline-dark" (click)="onProductClick(product)">
+            <h3 matLine class="font-weight-bold text-center">Nombre: 
+              <span class="font-italic">{{product.name}}</span>
+            </h3> 
+            <p matLine >
+              <span class="">Tecnología: </span>
+              <span class="font-italic">{{product.technology.name}}</span>
+            </p>
+            <p matLine>
+              <span class="">Descripción: </span>
+              <span class="font-italic">{{product.description}}</span>
+            </p>
+            <ion-icon style="font-size:24px;" name="create-outline"></ion-icon>
+          </mat-list-item>
+        </mat-nav-list>
+        </ion-col>
+      </ion-row>
+    </div>
+    <div *ngIf="product">
+      <div class="border-top mt-4"></div>
+      <ion-row>
+        <ion-col>
+          <form [formGroup]="updateProductForm" (ngSubmit)="updateProduct(updateProductForm.value)">
+            <div class="container">
+              <ion-grid class="mt-5">
+                <ion-row class="row justify-content-center mt-2">
+                  <ion-col size-sm="6" size-xs="8">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Título</span>
+                      </div>
+                      <ion-input type="text" class="form-control" style="display: inline-flex;" placeholder="Nombre Pelicula"
+                        aria-label="Nombre Pelicula" formControlName="name" clearInput autofocus></ion-input>
+                    </div>
+                  </ion-col>
+                  <ion-col size-sm="6" size-xs="8">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Fecha lanzamiento</span>
+                      </div>
+                      <ion-datetime class="form-control" formControlName="anio" displayFormat="YYYY-MM-DD" min="1900"
+                        max="2050"></ion-datetime>
+                    </div>
+                  </ion-col>
+                </ion-row>
+                <ion-row class="row justify-content-center mt-2">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">Descripción</span>
+                    </div>
+                    <ion-input type="text" class="form-control" style="display: inline-flex;" placeholder="Descripción Breve"
+                      aria-label="Descripción Breve" formControlName="description" clearInput></ion-input>
+                  </div>
+                </ion-row>
+                <ion-row class="row justify-content-center mt-2">
+                  <ion-col size-sm="6" size-xs="8">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Cantidad</span>
+                      </div>
+                      <ion-input type="number" class="form-control" style="display: inline-flex;" placeholder="Cantidad"
+                        aria-label="Cantidad" formControlName="quantity" clearInput></ion-input>
+                    </div>
+                  </ion-col>
+                  <ion-col size-sm="6" size-xs="8">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">Precio</span>
+                      </div>
+                      <ion-input type="number" class="form-control" style="display: inline-flex;" placeholder="Precio"
+                        aria-label="Precio" formControlName="price" clearInput></ion-input>
+                    </div>
+                  </ion-col>
+                </ion-row>
+                <div class="border-top mt-4"></div>
+                <ion-row class="mt-2">
+                  <ion-col>
+                    <button type="submit" class="btn btn-success btn-lg btn-block"
+                      [disabled]="!updateProductForm.valid">Actualizar</button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+          </form>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+</ion-content>

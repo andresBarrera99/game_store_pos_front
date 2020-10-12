@@ -38,10 +38,25 @@ const routes: Routes = [
     path: 'clients/create',
     loadChildren: () => import('./pages/clients/create/create-client.module').then( m => m.CreateClientPageModule)
   },
-
-
-
-
+  {
+    path: 'products/create',
+    loadChildren: () => import('./pages/products/create-product/create-product.module').then( m => m.CreateProductPageModule)
+  },
+  {
+    path: 'products',
+    loadChildren: () => import('./pages/products/main-products/main-products.module').then( m => m.MainProductsPageModule)
+  },
+  {
+    path: 'products/update',
+    loadChildren: () => import('./pages/products/edit-product/edit-product.module').then( m => m.EditProductPageModule)
+  },
+  {
+    path: 'rent/create',
+    loadChildren: () => import('./pages/rent/create-rent/create-rent.module').then( m => m.CreateRentPageModule)
+  },  {
+    path: 'search-daily-rent',
+    loadChildren: () => import('./pages/rent/search-daily-rent/search-daily-rent.module').then( m => m.SearchDailyRentPageModule)
+  },
 
 ];
 
