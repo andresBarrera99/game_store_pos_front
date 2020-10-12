@@ -1,0 +1,29 @@
+<ion-content class="ion-padding" [fullscreen]="true">
+  <div class="container">
+    <ion-text color="dark ion-text-center">
+      <h1 classs="font-weight-bold">ADMINISTRACION DE CLIENTES</h1>
+    </ion-text>
+    <div class="border-top my-3"></div>
+    <ion-grid class="mt-5">
+      <ion-row class="row justify-content-center">
+        <ion-col >
+          <a routerLink="/clients/create" class="icon dark">
+            <img src="./assets/img/icon-add-client.png"/>
+          </a>
+          <ion-text color="dark ion-text-center">
+            <h1>Registrar Cliente</h1>
+          </ion-text>
+        </ion-col>
+        <ion-col >
+          <a routerLink="/clients/update" class="icon dark">
+            <img src="./assets/img/icon-update-client.png"/>
+          </a>
+          <ion-text color="dark ion-text-center">
+            <h1>Actualizar cliente</h1>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+<app-footer></app-footer>

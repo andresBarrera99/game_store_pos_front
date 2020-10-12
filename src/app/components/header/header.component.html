@@ -1,0 +1,27 @@
+<ion-header>
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark" role="navigation">
+    <div class="navbar-brand">
+      <img alt="Game Store Logo" src="../../assets/img/logo-game-store.png" />
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+    <ion-title class="navbar-text th" *ngIf='!parameters.isUserLoggenIn()'>{{title}}</ion-title>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav nav-tabs mr-auto">
+        <li class="nav-item"><a class="nav-link active" *ngIf='parameters.isUserLoggenIn()' data-toggle="collapse"
+            data-target=".navbar-collapse" routerLink="home" class="nav-link">Menu<span
+              class="sr-only">(current)</span></a></li>
+        <li class="nav-item"><a class="nav-link" *ngIf='parameters.isUserLoggenIn()' data-toggle="collapse"
+            data-target=".navbar-collapse" routerLink="rent" class="nav-link">Alquiler</a></li>
+        <li class="nav-item"><a class="nav-link" *ngIf='parameters.isUserLoggenIn()' data-toggle="collapse"
+            data-target=".navbar-collapse" routerLink="clients" class="nav-link">Clientes</a></li>
+      </ul>
+      <ul class="navbar-nav navbar-collapse justify-content-end">
+        <li class="nav-item"><a *ngIf='parameters.isUserLoggenIn()' routerLink="/logout" class="nav-link">Cerrar
+            Sesión</a></li>
+      </ul>
+    </div>
+  </nav>
+</ion-header>

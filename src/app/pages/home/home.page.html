@@ -1,0 +1,29 @@
+<ion-content class="ion-padding" [fullscreen]="true">
+  <div class="container">
+    <ion-text color="dark ion-text-center">
+      <h1>ADMINISTRACION GAME STORE</h1>
+    </ion-text>
+    <div class="border-top my-3"></div>
+    <ion-grid class="mt-5">
+      <ion-row class="row justify-content-center">
+        <ion-col >
+          <a routerLink="/rent" class="icon dark">
+            <img src="./assets/img/icon-sales.png"/>
+          </a>
+          <ion-text color="dark ion-text-center">
+            <h1>Alquiler</h1>
+          </ion-text>
+        </ion-col>
+        <ion-col >
+          <a routerLink="/clients" class="icon dark">
+            <img src="./assets/img/icon-client.png"/>
+          </a>
+          <ion-text color="dark ion-text-center">
+            <h1>Adm. Clientes</h1>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+<app-footer></app-footer>

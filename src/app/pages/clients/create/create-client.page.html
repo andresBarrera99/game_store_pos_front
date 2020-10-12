@@ -1,0 +1,134 @@
+<ion-content [fullscreen]="true">
+  <form [formGroup]="createClientForm" (ngSubmit)="createClient(createClientForm.value)">
+    <h1 class="text-center font-weight-bold">Registrar Cliente</h1>
+    <div class="border-top my-3"></div>
+    <div class="container">
+      <ion-grid class="mt-5">
+        <ion-row class="row justify-content-center mt-2">
+          <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text">
+                <ion-icon style="font-size:24px;" name="person-circle"></ion-icon>Nombres
+              </span>
+            </div>
+            <ion-input type="text" class="form-control" style="display: inline-flex;" placeholder="Nombre Cliente"
+              aria-label="Nombre Cliente" formControlName="name" clearInput autofocus></ion-input>
+          </div>
+        </ion-row>
+
+        <ion-row class="row justify-content-center mt-2">
+          <ion-col size-sm="6" size-xs="8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <ion-icon style="font-size:24px;" name="person-circle"></ion-icon>Apellido 1
+                </span>
+              </div>
+              <ion-input type="text" class="form-control" style="display: inline-flex;" placeholder="Primer Apellido"
+                aria-label="Primer Apellido" formControlName="lastName1" clearInput></ion-input>
+            </div>
+          </ion-col>
+          <ion-col size-sm="6" size-xs="8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <ion-icon style="font-size:24px;" name="person-circle"></ion-icon>Apellido 2
+                </span>
+              </div>
+              <ion-input type="text" class="form-control" style="display: inline-flex;" placeholder="Segundo Apellido"
+                aria-label="Segundo Apellido" formControlName="lastName2" clearInput></ion-input>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="row justify-content-center mt-2">
+          <ion-col size-sm="6" size-xs="8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <ion-icon style="font-size:24px;" name="card"></ion-icon>Tipo de Identificacion
+                </span>
+              </div>
+              <ion-select class="form-control" placeholder="Documento" interface="alert"  formControlName="docType">
+                <ion-select-option value="{{documentType.id}}" *ngFor="let documentType of documentTypes">
+                 {{documentType.initials + ' | ' + documentType.description}}</ion-select-option>
+              </ion-select>
+            </div>
+          </ion-col>
+          <ion-col size-sm="6" size-xs="8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <ion-icon style="font-size:24px;" name="card"></ion-icon>Número Documento
+                </span>
+              </div>
+              <ion-input type="text" class="form-control" style="display: inline-flex;" placeholder="Número documento"
+                aria-label="Número documento" formControlName="docNumber" clearInput></ion-input>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="row justify-content-center mt-2">
+          <ion-col size-sm="6" size-xs="8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <ion-icon style="font-size:24px;" name="compass"></ion-icon>Dirección
+                </span>
+              </div>
+              <ion-input type="text" class="form-control" style="display: inline-flex;" placeholder="Dirección"
+                aria-label="Dirección" formControlName="address" clearInput></ion-input>
+            </div>
+          </ion-col>
+          <ion-col size-sm="6" size-xs="8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <ion-icon style="font-size:24px;" name="person-circle"></ion-icon>Edad
+                </span>
+              </div>  
+               <ion-input type="number" class="form-control" style="display: inline-flex;" placeholder="Edad"
+                aria-label="Edad" formControlName="age" clearInput></ion-input>
+            </div>
+          </ion-col>
+        </ion-row>
+        <ion-row class="row justify-content-center mt-2">
+          <ion-col size-sm="6" size-xs="8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <ion-icon style="font-size:24px;" name="call"></ion-icon>Teléfono
+                </span>
+              </div>
+              <ion-input type="number" class="form-control" style="display: inline-flex;" placeholder="Teléfono"
+                aria-label="Teléfono" formControlName="phone" clearInput></ion-input>
+            </div>
+          </ion-col>
+          <ion-col size-sm="6" size-xs="8">
+            <div class="input-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">
+                  <ion-icon style="font-size:24px;" name="call"></ion-icon>Celular
+                </span>
+              </div>
+              <ion-input type="number" class="form-control" style="display: inline-flex;" placeholder="Celular"
+                aria-label="Celular" formControlName="cellPhone" clearInput></ion-input>
+            </div>
+          </ion-col>
+        </ion-row>
+        <div class="border-top mt-4"></div>
+        <ion-row class="mt-2">
+          <ion-col size-sm="6" size-xs="8">
+            <button type="submit" class="btn btn-success btn-lg btn-block"
+              [disabled]="!createClientForm.valid">Registrar</button>
+          </ion-col>
+          <ion-col size-sm="6" size-xs="8">
+            <a routerLink="/clients" style="text-decoration: none;">
+              <button type="button" class="btn btn-danger btn-lg btn-block"
+                (click)='createClientForm.reset();'>Cancelar</button>
+            </a>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </div>
+  </form>
+</ion-content>

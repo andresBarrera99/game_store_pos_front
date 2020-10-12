@@ -1,0 +1,32 @@
+<ion-content [fullscreen]="true">
+  <form [formGroup]="loginForm" (ngSubmit)="handleLogin(loginForm.value)" appFocusDir>
+    <h1 class="text-center">Iniciar Sesion</h1>
+    <div class="border-top my-3"></div>
+    <div class="container">
+      <div class="input-group mb-3 mt-4">
+        <div class="input-group-prepend">
+          <span class="input-group-text"><ion-icon style="font-size:24px;" name="person-circle-outline"></ion-icon>Usuario</span>
+        </div>
+        <ion-input type="text" (keypress)="numberOnlyValidation($event)" class="form-control" style="display: inline-flex;" placeholder="Cédula"
+          aria-label="Cédula" formControlName="username" clearInput clearOnEdit autofocus></ion-input>
+      </div>
+      <div class="input-group mb-3">
+        <div class="input-group-prepend">
+          <span class="input-group-text">Contraseña</span>
+        </div>
+        <ion-input type="{{type}}" class="form-control" style="display: inline-flex;" placeholder="Contraseña"
+          aria-label="Contraseña" formControlName="password" clearInput></ion-input>
+        <div class="input-group-append">
+          <button type="button" clear item-end class="form-control" (click)='showPassword()'>
+            <ion-icon name="{{icon}}" style="font-size:24px;"></ion-icon>
+          </button>
+        </div>
+      </div>
+      <div class="border-top mt-4"></div>
+      <button type="submit" class="btn btn-success btn-lg btn-block mt-4" [disabled]="!loginForm.valid">Iniciar
+        Sesion</button>
+      <button type="button" class="btn btn-danger btn-lg btn-block mt-3"
+        (click)='loginForm.reset();'>Limpiar</button>
+    </div>
+  </form>
+</ion-content>

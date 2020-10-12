@@ -1,0 +1,29 @@
+<ion-content class="ion-padding" [fullscreen]="true">
+  <div class="container">
+    <ion-text color="dark ion-text-center">
+      <h1>ALQUILER GAME STORE</h1>
+    </ion-text>
+    <div class="border-top my-3"></div>
+    <ion-grid class="mt-5">
+      <ion-row class="row justify-content-center">
+        <ion-col >
+          <a routerLink="/rent/create" class="icon dark">
+            <img src="./assets/img/icon-create-order.png"/>
+          </a>
+          <ion-text color="dark ion-text-center">
+            <h1>Registrar Alquiler</h1>
+          </ion-text>
+        </ion-col>
+        <ion-col >
+          <a routerLink="/rent/search" class="icon dark">
+            <img src="./assets/img/icon-search-sales.png"/>
+          </a>
+          <ion-text color="dark ion-text-center">
+            <h1>Consultar Ventas Día</h1>
+          </ion-text>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+</ion-content>
+<app-footer></app-footer>

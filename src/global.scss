@@ -24,3 +24,32 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+.input-group-text {
+    min-width: 150px; 
+    max-height: 40px; 
+}
+.alert-wrapper{
+    max-width: unset !important;
+    width: 50% !important;
+}
+
+.mat-input-underline, .mat-form-field-underline{
+    display: none;
+}
+
+.icon{
+    background: white;
+    border-radius: 50%;
+    position: relative;
+    padding: 1px;
+    width: 100px;
+    height: 100px;
+    display: block;
+    margin: auto;
+    img{
+        position: absolute;
+        width: 100px;
+        padding: 1px;
+        margin: auto auto;
+    }
+}

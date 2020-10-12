@@ -32,14 +32,56 @@
               }
             ],
             "styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.css",
               {
                 "input": "src/theme/variables.scss"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/normalize.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/structure.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/typography.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/core.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/padding.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/float-elements.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-alignment.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-transformation.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/flex-utils.css"
               },
               {
                 "input": "src/global.scss"
               }
             ],
-            "scripts": []
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js",
+              "./node_modules/bootstrap/js/dist/alert.js",
+              "./node_modules/bootstrap/js/dist/button.js",
+              "./node_modules/bootstrap/js/dist/carousel.js",
+              "./node_modules/bootstrap/js/dist/collapse.js",
+              "./node_modules/bootstrap/js/dist/dropdown.js",
+              "./node_modules/bootstrap/js/dist/modal.js",
+              "./node_modules/bootstrap/js/dist/scrollspy.js",
+              "./node_modules/bootstrap/js/dist/tab.js",
+              "./node_modules/bootstrap/js/dist/tooltip.js",
+              "./node_modules/bootstrap/js/dist/util.js",
+              "./node_modules/bootstrap/js/dist/popover.js"
+            ]
           },
           "configurations": {
             "production": {
@@ -99,7 +141,6 @@
             "tsConfig": "tsconfig.spec.json",
             "karmaConfig": "karma.conf.js",
             "styles": [],
-            "scripts": [],
             "assets": [
               {
                 "glob": "favicon.ico",
@@ -113,6 +154,60 @@
               }
             ]
           },
+          "styles": [
+            "node_modules/bootstrap/dist/css/bootstrap.css",
+              {
+                "input": "src/theme/variables.scss"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/normalize.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/structure.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/typography.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/core.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/padding.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/float-elements.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-alignment.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/text-transformation.css"
+              },
+              {
+                "input": "node_modules/@ionic/angular/css/flex-utils.css"
+              },
+              {
+                "input": "src/global.scss"
+              }
+          ],
+          "scripts": [
+            "./node_modules/jquery/dist/jquery.js",
+            "./node_modules/jquery/dist/jquery.slim.min.js",
+            "./node_modules/popper.js/dist/umd/popper.min.js",
+            "./node_modules/bootstrap/dist/js/bootstrap.min.js",
+            "./node_modules/bootstrap/dist/js/bootstrap.js",
+            "./node_modules/bootstrap/js/dist/alert.js",
+            "./node_modules/bootstrap/js/dist/button.js",
+            "./node_modules/bootstrap/js/dist/carousel.js",
+            "./node_modules/bootstrap/js/dist/collapse.js",
+            "./node_modules/bootstrap/js/dist/dropdown.js",
+            "./node_modules/bootstrap/js/dist/modal.js",
+            "./node_modules/bootstrap/js/dist/scrollspy.js",
+            "./node_modules/bootstrap/js/dist/tab.js",
+            "./node_modules/bootstrap/js/dist/tooltip.js",
+            "./node_modules/bootstrap/js/dist/util.js",
+            "./node_modules/bootstrap/js/dist/popover.js"
+          ],
           "configurations": {
             "ci": {
               "progress": false,
@@ -128,7 +223,9 @@
               "tsconfig.spec.json",
               "e2e/tsconfig.json"
             ],
-            "exclude": ["**/node_modules/**"]
+            "exclude": [
+              "**/node_modules/**"
+            ]
           }
         },
         "e2e": {

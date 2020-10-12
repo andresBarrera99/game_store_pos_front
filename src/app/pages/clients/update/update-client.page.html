@@ -1,0 +1,162 @@
+<ion-content [fullscreen]="true">
+  <h1 class="text-center font-weight-bold">Actualizar clientes</h1>
+  <div class="border-top my-3"></div>
+  <ion-grid>
+    <ion-row>
+      <ion-col>
+        <form [formGroup]="searchClientForm" (ngSubmit)="searchClient(searchClientForm.value)">
+          <div class="container">
+            <ion-grid class="mt-5">
+              <ion-row class="row justify-content-center">
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">
+                      <ion-icon style="font-size:24px;" name="card"></ion-icon>Tipo de Identificación
+                    </span>
+                  </div>
+                  <ion-select class="form-control" placeholder="Documento" interface="alert" formControlName="docType">
+                    <ion-select-option value="{{documentType.id}}" *ngFor="let documentType of documentTypes">
+                      {{documentType.initials + ' | ' + documentType.description}}</ion-select-option>
+                  </ion-select>
+                </div>
+              </ion-row>
+              <ion-row class="row justify-content-center mt-2">
+                <div class="input-group">
+                  <span class="input-group-text">
+                    <ion-icon style="font-size:24px;" name="card"></ion-icon>Número identificación
+                  </span>
+                  <ion-input type="text" class="form-control" style="display: inline-flex;"
+                    placeholder="Número identificación" aria-label="Número identificación" formControlName="docNumber"
+                    clearInput></ion-input>
+                </div>
+              </ion-row>
+              <ion-row class="row justify-content-center mt-2">
+                <ion-col>
+                  <button type="submit" class="btn btn-primary btn-lg btn-block"
+                  [disabled]="!searchClientForm.valid">Consultar</button>
+                </ion-col>
+                <ion-col>
+                  <button type="button" class="btn btn-secondary btn-lg btn-block"
+                    (click)='clearForm()'>Limpiar</button>
+                </ion-col>
+                <ion-col>
+                  <a routerLink="/clients" style="text-decoration: none;">
+                    <button type="button" class="btn btn-danger btn-lg btn-block"
+                      (click)='clearForm()'>Cancelar</button>
+                  </a>
+                </ion-col>
+              </ion-row>
+            </ion-grid>
+          </div>
+        </form>
+      </ion-col>
+    </ion-row>
+
+    <div *ngIf="client">
+      <div class="border-top mt-4"></div>
+      <ion-row>
+        <ion-col>
+          <form [formGroup]="updateClientForm" (ngSubmit)="updateClient(updateClientForm.value)">
+            <div class="container">
+              <ion-grid class="mt-5">
+                <ion-row class="row justify-content-center mt-2">
+                  <ion-col size-sm="6" size-xs="8">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <ion-icon style="font-size:24px;" name="person-circle"></ion-icon>Nombres
+                        </span>
+                      </div>
+                      <ion-input type="text" class="form-control" style="display: inline-flex;"
+                        placeholder="Nombre Cliente" aria-label="Nombre Cliente" formControlName="name" clearInput
+                        autofocus></ion-input>
+                    </div>
+                  </ion-col>
+                  <ion-col size-sm="6" size-xs="8">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <ion-icon style="font-size:24px;" name="person-circle"></ion-icon>Apellido 1
+                        </span>
+                      </div>
+                      <ion-input type="text" class="form-control" style="display: inline-flex;"
+                        placeholder="Primer Apellido" aria-label="Primer Apellido" formControlName="lastName1"
+                        clearInput></ion-input>
+                    </div>
+                  </ion-col>
+                </ion-row>
+                <ion-row class="row justify-content-center mt-2">
+                  <ion-col size-sm="6" size-xs="8">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <ion-icon style="font-size:24px;" name="person-circle"></ion-icon>Apellido 2
+                        </span>
+                      </div>
+                      <ion-input type="text" class="form-control" style="display: inline-flex;"
+                        placeholder="Segundo Apellido" aria-label="Segundo Apellido" formControlName="lastName2"
+                        clearInput></ion-input>
+                    </div>
+                  </ion-col>
+                  <ion-col size-sm="6" size-xs="8">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <ion-icon style="font-size:24px;" name="compass"></ion-icon>Dirección
+                        </span>
+                      </div>
+                      <ion-input type="text" class="form-control" style="display: inline-flex;" placeholder="Dirección"
+                        aria-label="Dirección" formControlName="address" clearInput></ion-input>
+                    </div>
+                  </ion-col>
+                </ion-row>
+                <ion-row class="row justify-content-center mt-2">
+                  <ion-col size-sm="4" size-xs="8">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <ion-icon style="font-size:24px;" name="person-circle"></ion-icon>Edad
+                        </span>
+                      </div>
+                      <ion-input type="number" class="form-control" style="display: inline-flex;" placeholder="Edad"
+                        aria-label="Edad" formControlName="age" clearInput></ion-input>
+                    </div>
+                  </ion-col>
+                  <ion-col size-sm="4" size-xs="8">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <ion-icon style="font-size:24px;" name="call"></ion-icon>Teléfono
+                        </span>
+                      </div>
+                      <ion-input type="number" class="form-control" style="display: inline-flex;" placeholder="Teléfono"
+                        aria-label="Teléfono" formControlName="phone" clearInput></ion-input>
+                    </div>
+                  </ion-col>
+                  <ion-col size-sm="4" size-xs="8">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">
+                          <ion-icon style="font-size:24px;" name="call"></ion-icon>Celular
+                        </span>
+                      </div>
+                      <ion-input type="number" class="form-control" style="display: inline-flex;" placeholder="Celular"
+                        aria-label="Celular" formControlName="cellPhone" clearInput></ion-input>
+                    </div>
+                  </ion-col>
+                </ion-row>
+                <div class="border-top mt-4"></div>
+                <ion-row class="mt-2">
+                  <ion-col>
+                    <button type="submit" class="btn btn-success btn-lg btn-block"
+                      [disabled]="!updateClientForm.valid">Actualizar</button>
+                  </ion-col>
+                </ion-row>
+              </ion-grid>
+            </div>
+          </form>
+        </ion-col>
+      </ion-row>
+    </div>
+  </ion-grid>
+</ion-content>

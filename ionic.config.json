@@ -1,7 +1,8 @@
 {
   "name": "game_store_pos_front",
   "integrations": {
-    "capacitor": {}
+    "capacitor": {},
+    "cordova": {}
   },
   "type": "angular"
 }
