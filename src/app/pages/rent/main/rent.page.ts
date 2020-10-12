@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { UtilService } from 'src/app/service/util/util.service';
 
 @Component({
   selector: 'app-rent',
@@ -7,9 +8,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RentPage implements OnInit {
 
-  constructor() { }
+  constructor(
+    private util: UtilService) { }
 
   ngOnInit() {
+  }
+
+  optionNotAvailable(){
+    this.util.showSimpleMessage('Error', 'Opcion no disponible');
   }
 
 }
