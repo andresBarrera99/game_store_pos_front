@@ -53,10 +53,7 @@ const routes: Routes = [
   {
     path: 'rent/create',
     loadChildren: () => import('./pages/rent/create-rent/create-rent.module').then( m => m.CreateRentPageModule)
-  },  {
-    path: 'search-daily-rent',
-    loadChildren: () => import('./pages/rent/search-daily-rent/search-daily-rent.module').then( m => m.SearchDailyRentPageModule)
-  },
+  }
 
 ];
 
