@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Router,NavigationEnd} from '@angular/router';
+import { Router} from '@angular/router';
 import { AlertController,LoadingController,ToastController} from '@ionic/angular';
-import { resolve } from 'dns';
 import { ParametersService } from 'src/app/service/parameters/parameters.service';
 
 @Injectable({

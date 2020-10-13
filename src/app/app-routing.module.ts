@@ -24,35 +24,43 @@ const routes: Routes = [
   },
   {
     path: 'rent',
-    loadChildren: () => import('./pages/rent/main/rent.module').then( m => m.RentPageModule)
+    loadChildren: () => import('./pages/rent/main/rent.module').then( m => m.RentPageModule),
+    canActivate: [RouteGuardService]
   },
   {
     path: 'clients',
-    loadChildren: () => import('./pages/clients/main/clients.module').then( m => m.ClientsPageModule)
+    loadChildren: () => import('./pages/clients/main/clients.module').then( m => m.ClientsPageModule),
+    canActivate: [RouteGuardService]
   },
   {
     path: 'clients/update',
-    loadChildren: () => import('./pages/clients/update/update-client.module').then( m => m.UpdatePageModule)
+    loadChildren: () => import('./pages/clients/update/update-client.module').then( m => m.UpdatePageModule),
+    canActivate: [RouteGuardService]
   },
   {
     path: 'clients/create',
-    loadChildren: () => import('./pages/clients/create/create-client.module').then( m => m.CreateClientPageModule)
+    loadChildren: () => import('./pages/clients/create/create-client.module').then( m => m.CreateClientPageModule),
+    canActivate: [RouteGuardService]
   },
   {
     path: 'products/create',
-    loadChildren: () => import('./pages/products/create-product/create-product.module').then( m => m.CreateProductPageModule)
+    loadChildren: () => import('./pages/products/create-product/create-product.module').then( m => m.CreateProductPageModule),
+    canActivate: [RouteGuardService]
   },
   {
     path: 'products',
-    loadChildren: () => import('./pages/products/main-products/main-products.module').then( m => m.MainProductsPageModule)
+    loadChildren: () => import('./pages/products/main-products/main-products.module').then( m => m.MainProductsPageModule),
+    canActivate: [RouteGuardService]
   },
   {
     path: 'products/update',
-    loadChildren: () => import('./pages/products/edit-product/edit-product.module').then( m => m.EditProductPageModule)
+    loadChildren: () => import('./pages/products/edit-product/edit-product.module').then( m => m.EditProductPageModule),
+    canActivate: [RouteGuardService]
   },
   {
     path: 'rent/create',
-    loadChildren: () => import('./pages/rent/create-rent/create-rent.module').then( m => m.CreateRentPageModule)
+    loadChildren: () => import('./pages/rent/create-rent/create-rent.module').then( m => m.CreateRentPageModule),
+    canActivate: [RouteGuardService]
   }
 
 ];
